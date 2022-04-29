@@ -1,0 +1,106 @@
+{% extends "base.html" %}
+{% block title %}Youv'e logged in {% endblock %}
+{% block content %} 
+<style>
+
+.buttonload {
+  background-color: #04AA6D; /* Green background */
+  border: none; /* Remove borders */
+  color: white; /* White text */
+  padding: 12px 24px; /* Some padding */
+  font-size: 16px; /* Set a font-size */
+}
+
+/* Add a right margin to each icon */
+.fa {
+  margin-left: -12px;
+  margin-right: 8px;
+}
+
+</style>
+<p>Hello You have Logged in as {{ username }}</p>
+
+<script>
+  var element = document.getElementById("loaders");
+  
+ 
+  $(document).ready(function(){
+    $("i").hide()
+  $(".buttonload").click(function(){
+   $("i").show();
+   
+  });
+});
+  </script>
+{% if message  %}
+    <div class="alert alert-secondary" role="alert">
+        <p>{{ message }}</p>
+    </div>
+{% endif %}
+<div >
+  <div><center><h2>List Of Members</h2></center></div><div><center><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  
+    <!-- Add font awesome icons to buttons (note that the fa-spin class rotates the icon) -->
+   <a href="/email_sync"> <button class="buttonload">
+      <i id="loaders"class=" fa fa-spinner fa-spin "></i>Sync Email
+    </button></a></center></div>
+  </div>
+  <div>
+  <table class="table table-striped">
+  <thead class="thead-dark">
+    <tr>
+      
+      <th scope="col">Firstname</th>
+      <th scope="col">Lastname</th>
+      <th scope="col">Teamname</th>
+      <th scope="col">Email</th>
+      <th scope="col">Role</th>
+    </tr>
+  </thead>
+  <tbody>
+{% for detail in datas %}
+<tr scope="row">
+  
+  <td>{{ detail.Firstname }}</td>
+  <td>{{ detail.Lastname }}</td>
+  <td>{{ detail.Teamname }}</td>
+  <td>{{ detail.email }}</td>
+  <td>{{ detail.Role}}</td>
+ </tr>
+{% endfor %}
+</tbody>
+</table>
+</div>
+
+<!-- <form action="" method="post" class="m-5">
+    <h4><i>Add Team members</i></h4>
+    <div class="form-group">
+    <label for="Firstname">First name</label>
+    <input name="Firstname" class="form-control" id="inputFirstname" aria-describedby="emailHelp" placeholder="Enter First name">
+    <small id="Firstname" class="form-text text-muted">Please enter your First name</small>
+  </div>
+  <div class="form-group">
+    <label for="Lastname">Lastname</label>
+    <input name="Lastname" class="form-control" id="inputLastname" aria-describedby="emailHelp" placeholder="Enter Last name">
+    <small id="Lastname" class="form-text text-muted">Please enter your Last name</small>
+  </div>
+  <div class="form-group">
+        <label for="InputEmail">Email address</label>
+        <input name="email" class="form-control" id="InputEmail"  placeholder="Enter email">
+        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+  </div>
+  <div class="form-group">
+    <label for="Role">Role</label>
+    <input name="Role" class="form-control" id="inputRole" aria-describedby="emailHelp" placeholder="Enter Role">
+    <small id="Role" class="form-text text-muted">Please enter your Role</small>
+  </div>
+  <div class="form-group">
+    <label for="InputPassword">Password</label>
+    <input type="password" name="password1" class="form-control" id="InputPassword" placeholder="Password">
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+
+
+</form>  -->
+
+{% endblock %}

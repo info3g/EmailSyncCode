@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block title %}Register System{% endblock %}
+
+{% block content %}
+
+<div>
+  <center><h3>SYNKED EMAILS</h3></center>
+  <table class="table table-striped">
+  <thead class="thead-dark">
+    <tr>
+      
+      <th scope="col">Firstname</th>
+      <th scope="col">Lastname</th>
+      <th scope="col">Teamname</th>
+      <th scope="col">From</th>
+      <th scope="col">To</th>
+      <th scope="col">Subject</th>
+      <th scope="col">Message</th>
+      <th scope="col">Date</th>
+      <th scope="col">Files</th>
+    </tr>
+  </thead>
+  <tbody>
+{% for del in details %}
+  <tr scope="row">
+    
+    <td>{{ del.firstname }}</td>
+    <td>{{ del.lastname }}</td>
+    <td>{{ del.teamname }}</td>
+    <td>{{ del.From }}</td>
+    <td>{{ del.Reciever}}</td>
+    <td>{{ del.subject }}</td>
+    <td>{{ del.message }}</td>
+    <td>{{ del.date}}</td>
+    <td>{{ del.file }}</td>
+  </tr>
+{% endfor %}
+</tbody>
+</table>
+</div>
+
+{% endblock %}
